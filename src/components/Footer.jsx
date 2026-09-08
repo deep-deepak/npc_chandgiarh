@@ -59,7 +59,7 @@ const Footer = () => {
                 </Row>
 
                 <div className="footer-bottom">
-                    <span>© 2025 NPC Regional Chandigarh. All Rights Reserved.</span>
+                    <span>© 2025 NPC Regionals Chandigarh 2026. All Rights Reserved.</span>
                     <span>Designed with <span className="heart">♥</span> for Fitness Community</span>
                 </div>
             </Container>

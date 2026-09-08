@@ -8,8 +8,8 @@ const HeroSection = () => {
                 <Row className="align-items-center gy-5">
                     <Col lg={6}>
                         <h1 className="hero-title">
-                            NPC Regional
-                            <span className="accent">Chandigarh</span>
+                            NPC Regionals
+                            <span className="accent">Chandigarh 2026</span>
                         </h1>
                         <p className="hero-tagline">Build Your Body. Build Your Legacy.</p>
 
@@ -30,8 +30,8 @@ const HeroSection = () => {
                     <Col lg={6}>
                         <div className="hero-image-wrap" data-aos="fade-left">
                             <img
-                                src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1200&auto=format&fit=crop"
-                                alt="NPC Regional Chandigarh bodybuilding athletes"
+                                src="https://images.unsplash.com/photo-1754475059468-72287fecb613?q=80&w=1200&auto=format&fit=crop"
+                                alt="NPC Regionals Chandigarh 2026 bodybuilding athletes"
                             />
                             <div className="prize-tag">
                                 <span className="amount">₹4.5 Lakh+</span>

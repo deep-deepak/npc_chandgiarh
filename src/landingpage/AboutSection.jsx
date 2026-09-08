@@ -13,10 +13,10 @@ const AboutSection = () => {
             <Container className="container-xl">
                 <Row className="align-items-center gy-5">
                     <Col lg={6} data-aos="fade-right">
-                        <span className="eyebrow">About NPC Regional</span>
+                        <span className="eyebrow">About NPC Regionals</span>
                         <h2 className="section-title">Uniting Strength. Inspiring Champions.</h2>
                         <p>
-                            NPC Regional Chandigarh is a premier platform for athletes,
+                            NPC Regionals Chandigarh 2026 is a premier platform for athletes,
                             bodybuilders, powerlifters and fitness enthusiasts to showcase
                             their strength, discipline and dedication.
                         </p>
@@ -37,8 +37,8 @@ const AboutSection = () => {
                     <Col lg={6} data-aos="fade-left">
                         <div className="about-image-wrap">
                             <img
-                                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop"
-                                alt="NPC Regional Chandigarh athlete lineup"
+                                src="https://images.unsplash.com/photo-1434847868581-86e8a2b8e7a3?q=80&w=1200&auto=format&fit=crop"
+                                alt="NPC Regionals Chandigarh 2026 athlete lineup"
                             />
                         </div>
                     </Col>

@@ -15,7 +15,7 @@ const Header = () => {
             <Container className="container-xl">
                 <Navbar.Brand href="#home" className="d-flex flex-column">
                     <span className="brand-logo">NP<span>C</span></span>
-                    <span className="brand-sub">REGIONAL CHANDIGARH</span>
+                    <span className="brand-sub">REGIONALS CHANDIGARH 2026</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar" className="justify-content-end align-items-lg-center">
