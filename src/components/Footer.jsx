@@ -62,6 +62,12 @@ const Footer = () => {
                     </Col>
                 </Row>
 
+                <div className="footer-legal">
+                    <a href={`${import.meta.env.BASE_URL}privacy-policy.html`}>Privacy Policy</a>
+                    <a href={`${import.meta.env.BASE_URL}refund-policy.html`}>Refund &amp; Cancellation Policy</a>
+                    <a href={`${import.meta.env.BASE_URL}terms-and-conditions.html`}>Terms &amp; Conditions</a>
+                </div>
+
                 <div className="footer-bottom">
                     <span>© 2025 NPC Regionals Chandigarh 2026. All Rights Reserved.</span>
                     <span>Designed with <span className="heart">♥</span> for Fitness Community</span>
