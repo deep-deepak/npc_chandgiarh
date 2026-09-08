@@ -135,5 +135,11 @@ function verifyAndSave(data) {
     'Paid',
   ]);
 
-  return { result: 'success' };
+    return { result: 'success' };
 }
+
+function testAuth() {
+  var result = createOrder({ amount: 100, category: 'Test' });
+  Logger.log(result);
+}
+

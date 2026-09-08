@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 // Paste your Google Apps Script Web App URL here (see google-apps-script.gs for setup steps).
-const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzRTpcu6tK3GsB08KcVgy-evoBHJM9WEQ58iiIACjt1RNzTAKaNImCIrheb36YX2jhAyA/exec';
+const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxs2FMIR2VoHV3z9s-Bhc2_Qk0GmctWIMjyQ96X8_ioTN2PRMja-1x1YVUpr70dLOM4bg/exec';
 
 const CATEGORY_OPTIONS = [
     'Bodybuilding (NPC)',
