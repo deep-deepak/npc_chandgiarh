@@ -23,7 +23,11 @@ const Footer = () => {
             <Container className="container-xl">
                 <Row className="gy-4">
                     <Col lg={4} md={6}>
-                        <div className="brand-logo mb-2">NP<span>C</span></div>
+                        <div className="d-flex align-items-center mb-2">
+                            <img src={`${import.meta.env.BASE_URL}sports13nnlogo.webp`} alt="Sports-XIII" className="brand-partner-logo" />
+                            <span className="brand-divider">/</span>
+                            <div className="brand-logo">NP<span>C</span></div>
+                        </div>
                         <p style={{ fontSize: 14, lineHeight: 1.7 }}>
                             Building stronger athletes and a stronger community.
                         </p>

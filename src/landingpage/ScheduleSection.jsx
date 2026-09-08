@@ -1,30 +1,35 @@
+import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import DayDetailModal from './DayDetailModal';
+import CardImageSlider from './CardImageSlider';
 
 const DAYS = [
     {
         day: 'Day 1',
         date: '9 OCT',
         title: 'Tri-Rox Challenge',
-        image: 'https://images.unsplash.com/photo-1754475172820-6053bbed3b25?q=80&w=800&auto=format&fit=crop',
+        images: ['eebcaf91-89ac-433d-b2e4-f325b2e0fb04.jpg', '0a1bc46e-be05-42df-841f-8441289d8b64.jpg'],
         items: ['Sandbag Lunges', 'Powerlifting', 'Type Flip', 'Open for All Athletes'],
     },
     {
         day: 'Day 2',
         date: '10 OCT',
-        title: 'Indian Powerlifting League',
-        image: 'https://images.unsplash.com/photo-1754475096386-b7a2a45a91fb?q=80&w=800&auto=format&fit=crop',
+        title: 'Indian Powerlifting League + Tri-Rox',
+        images: ['homebanner.png'],
         items: ['Squat', 'Bench Press', 'Deadlift', 'All Weight Categories'],
     },
     {
         day: 'Day 3',
         date: '11 OCT',
-        title: 'NPC Bodybuilding Show',
-        image: 'https://images.unsplash.com/photo-1781191063027-05bea99c9943?q=80&w=800&auto=format&fit=crop',
+        title: 'National Bodybuilding & Bikini Championship',
+        images: ['Bikini championship.png', 'homebanner2.png'],
         items: ["Men's Physique", 'Classic Physique', "Women's Figure", 'Bodybuilding & Bikini'],
     },
 ];
 
 const ScheduleSection = () => {
+    const [activeDay, setActiveDay] = useState(null);
+
     return (
         <section id="schedule" className="schedule-section">
             <Container className="container-xl">
@@ -40,7 +45,7 @@ const ScheduleSection = () => {
                                     <span className="date-pill">{d.date}</span>
                                 </div>
                                 <div className="day-card-image">
-                                    <img src={d.image} alt={d.title} />
+                                    <CardImageSlider images={d.images} alt={d.title} />
                                 </div>
                                 <div className="day-card-body">
                                     <h4>{d.title}</h4>
@@ -49,6 +54,13 @@ const ScheduleSection = () => {
                                             <li key={it}>{it}</li>
                                         ))}
                                     </ul>
+                                    <button
+                                        type="button"
+                                        className="day-card-link"
+                                        onClick={() => setActiveDay(d)}
+                                    >
+                                        View Full Details →
+                                    </button>
                                 </div>
                             </div>
                         </Col>
@@ -57,6 +69,8 @@ const ScheduleSection = () => {
 
                 <a href="#register" className="btn-brand mt-5">Register Now</a>
             </Container>
+
+            <DayDetailModal day={activeDay} onClose={() => setActiveDay(null)} />
         </section>
     );
 };

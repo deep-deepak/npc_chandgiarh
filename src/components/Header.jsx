@@ -13,9 +13,13 @@ const Header = () => {
     return (
         <Navbar expand="lg" className="site-header" variant="dark" sticky="top">
             <Container className="container-xl">
-                <Navbar.Brand href="#home" className="d-flex flex-column">
-                    <span className="brand-logo">NP<span>C</span></span>
-                    <span className="brand-sub">REGIONALS CHANDIGARH 2026</span>
+                <Navbar.Brand href="#home" className="d-flex align-items-center">
+                    <img src={`${import.meta.env.BASE_URL}sports13nnlogo.webp`} alt="Sports-XIII" className="brand-partner-logo" />
+                    <span className="brand-divider">/</span>
+                    <div className="d-flex flex-column">
+                        <span className="brand-logo">NP<span>C</span></span>
+                        <span className="brand-sub">REGIONALS CHANDIGARH 2026</span>
+                    </div>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar" className="justify-content-end align-items-lg-center">

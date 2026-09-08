@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 const STATS = [
     { number: '3', label: 'Days' },
     { number: '20+', label: 'Categories' },
-    { number: '500+', label: 'Athletes' },
+    { number: '1000+', label: 'Athletes' },
     { number: '1', label: 'Legacy' },
 ];
 
@@ -16,9 +16,9 @@ const AboutSection = () => {
                         <span className="eyebrow">About NPC Regionals</span>
                         <h2 className="section-title">Uniting Strength. Inspiring Champions.</h2>
                         <p>
-                            NPC Regionals Chandigarh 2026 is a premier platform for athletes,
-                            bodybuilders, powerlifters and fitness enthusiasts to showcase
-                            their strength, discipline and dedication.
+                            NPC Regionals Chandigarh 2026 is a premier platform for athletes
+                            to showcase their strength, discipline and dedication across
+                            Bodybuilding, Powerlifting and Tri-Rox.
                         </p>
                         <p>
                             Join us for three power-packed days of competitions, learning,

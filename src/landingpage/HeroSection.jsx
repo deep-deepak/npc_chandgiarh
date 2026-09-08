@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import HeroSlider, { HERO_SLIDES } from './HeroSlider';
 
 const HeroSection = () => {
+    const [activeSlide, setActiveSlide] = useState(0);
+    const current = HERO_SLIDES[activeSlide];
+
     return (
         <section id="home" data-aos="fade-in" className="hero-section">
             <Container className="container-xl">
@@ -12,6 +17,9 @@ const HeroSection = () => {
                             <span className="accent">Chandigarh 2026</span>
                         </h1>
                         <p className="hero-tagline">Build Your Body. Build Your Legacy.</p>
+                        <p className="hero-description" key={activeSlide}>
+                            <span className="hero-discipline">{current.label}</span> — {current.description}
+                        </p>
 
                         <div className="d-flex flex-wrap mb-4">
                             <span className="hero-badge">
@@ -29,10 +37,7 @@ const HeroSection = () => {
                     </Col>
                     <Col lg={6}>
                         <div className="hero-image-wrap" data-aos="fade-left">
-                            <img
-                                src="https://images.unsplash.com/photo-1754475059468-72287fecb613?q=80&w=1200&auto=format&fit=crop"
-                                alt="NPC Regionals Chandigarh 2026 bodybuilding athletes"
-                            />
+                            <HeroSlider onActiveChange={setActiveSlide} />
                             <div className="prize-tag">
                                 <span className="amount">₹4.5 Lakh+</span>
                                 <span className="label">CASH PRIZES</span>

@@ -147,6 +147,20 @@ a {
   margin-top: 2px;
 }
 
+.brand-divider {
+  font-family: var(--font-display);
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 28px;
+  line-height: 1;
+  margin: 0 14px;
+}
+
+.brand-partner-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* Hero */
 .hero-section {
   position: relative;
@@ -190,7 +204,31 @@ a {
   letter-spacing: 1px;
   font-size: 15px;
   text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero-description {
+  color: #9aa0ad;
+  font-size: 15px;
+  font-weight: 500;
   margin-bottom: 24px;
+  animation: heroTextFade 0.6s ease;
+}
+
+.hero-discipline {
+  color: var(--red);
+  font-weight: 700;
+}
+
+@keyframes heroTextFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-image-wrap {
@@ -201,6 +239,55 @@ a {
   border-radius: 6px;
   width: 100%;
   object-fit: cover;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-slider-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.hero-slider-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hero-slider-dot.active {
+  background: var(--red);
+  transform: scale(1.2);
 }
 
 .prize-tag {
@@ -239,7 +326,7 @@ a {
 .category-card {
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  padding: 40px 28px;
+  overflow: hidden;
   height: 100%;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
@@ -247,6 +334,21 @@ a {
 .category-card:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   transform: translateY(-6px);
+}
+
+.category-card-image {
+  height: 180px;
+  overflow: hidden;
+}
+
+.category-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-card-body {
+  padding: 32px 28px 40px;
 }
 
 .category-icon {
@@ -374,6 +476,50 @@ a {
   object-fit: cover;
 }
 
+.card-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.card-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.card-slider-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.card-slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.card-slider-dot.active {
+  background: var(--red);
+  transform: scale(1.25);
+}
+
 .day-card-body {
   padding: 22px 20px 26px;
 }
@@ -404,6 +550,171 @@ a {
   content: '▸';
   color: var(--red);
   font-weight: 700;
+}
+
+.day-card-link {
+  display: inline-block;
+  margin-top: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.day-card-link:hover {
+  text-decoration: underline;
+}
+
+/* Day detail modal */
+.day-detail-modal .modal-content {
+  border-radius: 8px;
+  border: none;
+}
+
+.day-detail-modal .modal-header {
+  background: var(--navy);
+  border-bottom: none;
+  padding: 24px 28px 18px;
+}
+
+.day-detail-modal .modal-header .btn-close {
+  filter: invert(1);
+}
+
+.detail-modal-eyebrow {
+  display: block;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.day-detail-modal .modal-title {
+  font-family: var(--font-display);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.day-detail-modal .modal-body {
+  padding: 28px;
+}
+
+.detail-p {
+  color: var(--gray-text);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.detail-lead {
+  color: #10141f;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.detail-bold {
+  color: #10141f;
+  font-weight: 700;
+}
+
+.detail-heading {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  color: #10141f;
+  margin: 22px 0 10px;
+}
+
+.detail-list,
+.detail-flow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+
+.detail-list li,
+.detail-flow-list li {
+  color: var(--gray-text);
+  font-size: 14px;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-list li::before {
+  content: '▸';
+  color: var(--red);
+  font-weight: 700;
+}
+
+.detail-flow-list li::before {
+  content: '→';
+  color: var(--red);
+  font-weight: 700;
+}
+
+.detail-price-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.detail-price-item {
+  flex: 1 1 140px;
+  background: #f7f7f8;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.detail-price-item span {
+  color: var(--gray-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.detail-price-item strong {
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+
+.detail-note {
+  color: #9a9ea6;
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.detail-contact {
+  color: #10141f;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.detail-footer {
+  color: #10141f;
+  font-weight: 700;
+  font-size: 14px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 16px;
+  margin-top: 18px;
 }
 
 /* Registration form */

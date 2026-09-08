@@ -8,18 +8,21 @@ const CATEGORIES = [
         title: 'Bodybuilding',
         org: 'NPC',
         desc: "Men's & Women's Bodybuilding Categories",
+        image: 'Bikini championship.png',
     },
     {
         icon: <GiWeightLiftingUp />,
         title: 'Powerlifting',
         org: 'IPL',
         desc: 'Indian Powerlifting League Categories',
+        image: 'homebanner.png',
     },
     {
         icon: <FaRunning />,
         title: 'Tri-Rox',
-        org: 'By Tispor Singh',
+        org: 'By Tripat Singh',
         desc: 'Sandbag Lunges, Powerlifting, Type Flip',
+        image: '0a1bc46e-be05-42df-841f-8441289d8b64.jpg',
     },
 ];
 
@@ -34,11 +37,19 @@ const CategorySection = () => {
                     {CATEGORIES.map((cat, i) => (
                         <Col md={4} key={cat.title} data-aos="fade-up" data-aos-delay={i * 100}>
                             <div className="category-card">
-                                <div className="category-icon">{cat.icon}</div>
-                                <h4>{cat.title}</h4>
-                                <div className="cat-org">{cat.org}</div>
-                                <p>{cat.desc}</p>
-                                <a href="#register" className="btn-brand">Register Now</a>
+                                <div className="category-card-image">
+                                    <img
+                                        src={`${import.meta.env.BASE_URL}${encodeURIComponent(cat.image)}`}
+                                        alt={`${cat.title} - NPC Regionals Chandigarh 2026`}
+                                    />
+                                </div>
+                                <div className="category-card-body">
+                                    <div className="category-icon">{cat.icon}</div>
+                                    <h4>{cat.title}</h4>
+                                    <div className="cat-org">{cat.org}</div>
+                                    <p>{cat.desc}</p>
+                                    <a href="#register" className="btn-brand">Register Now</a>
+                                </div>
                             </div>
                         </Col>
                     ))}
