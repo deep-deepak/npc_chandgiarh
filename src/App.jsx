@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import Layout from '@/layout/Layout';
 import HeroSection from '@/landingpage/HeroSection';
-import CategorySection from '@/landingpage/CategorySection';
 import AboutSection from '@/landingpage/AboutSection';
 import ScheduleSection from '@/landingpage/ScheduleSection';
 import RegistrationForm from '@/landingpage/RegistrationForm';
@@ -50,9 +49,8 @@ function App() {
 
       <Layout>
         <HeroSection />
-        <CategorySection />
-        <AboutSection />
         <ScheduleSection />
+        <AboutSection />
         <RegistrationForm />
         <WhyParticipate />
         <ContactBar />

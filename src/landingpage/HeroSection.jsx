@@ -39,7 +39,7 @@ const HeroSection = () => {
                         <div className="hero-image-wrap" data-aos="fade-left">
                             <HeroSlider onActiveChange={setActiveSlide} />
                             <div className="prize-tag">
-                                <span className="amount">₹4.5 Lakh+</span>
+                                <span className="amount">₹4.5 Lakh</span>
                                 <span className="label">CASH PRIZES</span>
                             </div>
                         </div>

@@ -3,7 +3,7 @@ import { FaFlag, FaMoneyBillWave, FaUserTie, FaUsers, FaCamera } from 'react-ico
 
 const WHY_ITEMS = [
     { icon: <FaFlag />, label: 'National Level Exposure' },
-    { icon: <FaMoneyBillWave />, label: '₹4.5 Lakh+ Cash Prizes' },
+    { icon: <FaMoneyBillWave />, label: '₹4.5 Lakh Cash Prizes' },
     { icon: <FaUserTie />, label: 'Judged by Experts' },
     { icon: <FaUsers />, label: 'Network with Top Athletes' },
     { icon: <FaCamera />, label: 'Media & Brand Visibility' },

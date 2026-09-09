@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 const NAV_LINKS = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
-    { label: 'Events', href: '#categories' },
+    { label: 'Events', href: '#schedule' },
     { label: 'Registration', href: '#register' },
     { label: 'Schedule', href: '#schedule' },
     { label: 'Contact', href: '#contact' },

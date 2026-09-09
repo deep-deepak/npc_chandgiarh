@@ -7,8 +7,9 @@ export const HERO_SLIDES = [
         label: 'Powerlifting',
         description: 'Squat, bench, deadlift — pure strength on the platform.',
     },
+   
     {
-        src: 'homebanner2.png',
+        src: 'powerlifting-lineup1.png',
         alt: 'NPC Regionals Chandigarh 2026 - bodybuilding lineup',
         label: 'Bodybuilding',
         description: 'Physique, symmetry and stage presence at their peak.',

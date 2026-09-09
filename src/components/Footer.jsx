@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 const QUICK_LINKS = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
-    { label: 'Events', href: '#categories' },
+    { label: 'Events', href: '#schedule' },
     { label: 'Schedule', href: '#schedule' },
     { label: 'Contact', href: '#contact' },
 ];

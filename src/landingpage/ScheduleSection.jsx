@@ -15,14 +15,14 @@ const DAYS = [
         day: 'Day 2',
         date: '10 OCT',
         title: 'Indian Powerlifting League + Tri-Rox',
-        images: ['homebanner.png', 'powerlifting-deadlift.png', 'powerlifting-lineup1.png', 'powerlifting-lineup2.png'],
+        images: ['homebanner.png', 'powerlifting-deadlift.png', ],
         items: ['Squat', 'Bench Press', 'Deadlift', 'All Weight Categories'],
     },
     {
         day: 'Day 3',
         date: '11 OCT',
         title: 'National Bodybuilding & Bikini Championship',
-        images: ['Bikini championship.png', 'homebanner2.png'],
+        images: ['powerlifting-lineup1.png', 'powerlifting-lineup2.png'],
         items: ["Men's Physique", 'Classic Physique', "Women's Figure", 'Bodybuilding & Bikini'],
     },
 ];
