@@ -15,7 +15,7 @@ const DAYS = [
         day: 'Day 2',
         date: '10 OCT',
         title: 'Indian Powerlifting League + Tri-Rox',
-        images: ['homebanner.png'],
+        images: ['homebanner.png', 'powerlifting-deadlift.png', 'powerlifting-lineup1.png', 'powerlifting-lineup2.png'],
         items: ['Squat', 'Bench Press', 'Deadlift', 'All Weight Categories'],
     },
     {
