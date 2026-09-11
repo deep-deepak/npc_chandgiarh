@@ -45,9 +45,12 @@ const renderBlock = (block, i) => {
     }
 };
 
+const DISTRICT_LINK = 'https://link.district.in/DSTRKT/9odjit7e';
+
 const DayDetailModal = ({ day, onClose }) => {
     if (!day) return null;
     const blocks = DAY_DETAILS[day.day] || [];
+    const isDay3 = day.day === 'Day 3';
 
     return (
         <Modal show={!!day} onHide={onClose} centered size="lg" scrollable className="day-detail-modal">
@@ -59,7 +62,11 @@ const DayDetailModal = ({ day, onClose }) => {
             </Modal.Header>
             <Modal.Body>
                 {blocks.map(renderBlock)}
-                <a href="#register" className="btn-brand mt-3" onClick={onClose}>Register Now</a>
+                {isDay3 ? (
+                    <a href="#register" className="btn-brand mt-3" onClick={onClose}>Register Now</a>
+                ) : (
+                    <a href={DISTRICT_LINK} target="_blank" rel="noopener noreferrer" className="btn-brand mt-3">Register Now</a>
+                )}
             </Modal.Body>
         </Modal>
     );

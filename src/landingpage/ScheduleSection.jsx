@@ -67,7 +67,7 @@ const ScheduleSection = () => {
                     ))}
                 </Row>
 
-                <a href="#register" className="btn-brand mt-5">Register Now</a>
+                <a href="https://link.district.in/DSTRKT/9odjit7e" target="_blank" rel="noopener noreferrer" className="btn-brand mt-5">Register Now</a>
             </Container>
 
             <DayDetailModal day={activeDay} onClose={() => setActiveDay(null)} />

@@ -58,7 +58,7 @@ const Footer = () => {
                         <p style={{ fontSize: 14, lineHeight: 1.7 }}>
                             Don't miss your chance to be part of this historic event.
                         </p>
-                        <a href="#register" className="btn-brand">Register Now</a>
+                        <a href="https://link.district.in/DSTRKT/9odjit7e" target="_blank" rel="noopener noreferrer" className="btn-brand">Register Now</a>
                     </Col>
                 </Row>
 

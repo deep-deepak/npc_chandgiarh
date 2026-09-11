@@ -31,7 +31,7 @@ const HeroSection = () => {
                         </div>
 
                         <div className="d-flex flex-wrap gap-3">
-                            <a href="#register" className="btn-brand">Register Now</a>
+                            <a href="https://link.district.in/DSTRKT/9odjit7e" target="_blank" rel="noopener noreferrer" className="btn-brand">Register Now</a>
                             <a href="#schedule" className="btn-outline-light-custom">Event Details</a>
                         </div>
                     </Col>

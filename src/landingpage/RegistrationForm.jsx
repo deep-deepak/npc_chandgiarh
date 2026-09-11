@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 // Paste your Google Apps Script Web App URL here (see google-apps-script.gs for setup steps).
-const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxs2FMIR2VoHV3z9s-Bhc2_Qk0GmctWIMjyQ96X8_ioTN2PRMja-1x1YVUpr70dLOM4bg/exec';
+const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwDZLcOMNhxUG8vneExO8-FE-0qr5-JMxe-bZ5-riL0sknNvyPjEVh1CyL8gERtLg2gZw/exec';
 
 const CATEGORY_OPTIONS = [
     'Bodybuilding (NPC)',
@@ -10,35 +10,10 @@ const CATEGORY_OPTIONS = [
     'Tri-Rox',
 ];
 
-// Registration fee tiers (INR) per category, matching the pricing on the schedule page.
-const CATEGORY_TIERS = {
-    'Bodybuilding (NPC)': [
-        { value: 'single', label: 'Single Entry — ₹3,500', price: 3500 },
-        { value: 'double', label: 'Double Entry — ₹6,000', price: 6000 },
-        { value: 'triple', label: 'Triple Entry — ₹8,500', price: 8500 },
-    ],
-    'Powerlifting (IPL)': [
-        { value: 'single', label: 'Single — ₹1,500', price: 1500 },
-        { value: 'double', label: 'Double — ₹2,000', price: 2000 },
-        { value: 'triple', label: 'Triple — ₹2,500', price: 2500 },
-    ],
-    'Tri-Rox': [
-        { value: 'competitive', label: 'Competitive (Men & Women) — ₹2,000', price: 2000 },
-        { value: 'non-competitive', label: 'Non-Competitive — ₹1,500', price: 1500 },
-    ],
-};
-
-const TANNING_FEE = 2000; // Optional add-on, Bodybuilding (NPC) only
-
-const getTierPrice = (category, entryType) => {
-    const tier = CATEGORY_TIERS[category]?.find((t) => t.value === entryType);
-    return tier ? tier.price : 0;
-};
-
-const getTotalAmount = (form) => {
-    const base = getTierPrice(form.category, form.entryType);
-    const tanning = form.category === 'Bodybuilding (NPC)' && form.tanning ? TANNING_FEE : 0;
-    return base + tanning;
+const ENTRY_TYPES = {
+    'Bodybuilding (NPC)': ['Single Entry', 'Double Entry', 'Triple Entry'],
+    'Powerlifting (IPL)': ['Single', 'Double', 'Triple'],
+    'Tri-Rox': ['Competitive (Men & Women)', 'Non-Competitive'],
 };
 
 const INITIAL_STATE = {
@@ -50,7 +25,6 @@ const INITIAL_STATE = {
     city: '',
     category: '',
     entryType: '',
-    tanning: false,
     division: '',
     emergencyContact: '',
     message: '',
@@ -63,27 +37,16 @@ const RegistrationForm = () => {
     const [submitted, setSubmitted] = useState(false);
     const [submitError, setSubmitError] = useState(false);
     const [submitting, setSubmitting] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const nextValue = type === 'checkbox' ? checked : value;
         setForm((prev) => {
             if (name === 'category') {
-                return { ...prev, category: nextValue, entryType: '', tanning: false };
+                return { ...prev, category: nextValue, entryType: '' };
             }
             return { ...prev, [name]: nextValue };
         });
-    };
-
-    const postToSheet = async (payload) => {
-        const res = await fetch(GOOGLE_SHEET_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
-        return res.json();
     };
 
     const handleSubmit = async (e) => {
@@ -98,84 +61,29 @@ const RegistrationForm = () => {
 
         setValidated(true);
         setSubmitError(false);
-        setErrorMessage('');
 
-        if (!GOOGLE_SHEET_ENDPOINT) {
-            // No backend configured — demo mode, skip payment entirely.
-            setSubmitted(true);
-            setForm(INITIAL_STATE);
-            setValidated(false);
-            return;
-        }
-
-        const amount = getTotalAmount(form);
-        setSubmitting(true);
-
-        try {
-            const orderData = await postToSheet({ action: 'create_order', amount, category: form.category });
-            if (orderData.result !== 'success') {
-                throw new Error(orderData.message || 'Could not start payment.');
-            }
-
-            if (typeof window.Razorpay === 'undefined') {
-                throw new Error('Payment gateway failed to load. Please refresh and try again.');
-            }
-
-            const rzp = new window.Razorpay({
-                key: orderData.keyId,
-                amount: orderData.amount,
-                currency: orderData.currency,
-                order_id: orderData.orderId,
-                name: 'NPC Regionals Chandigarh 2026',
-                description: `Registration - ${form.category}${form.tanning ? ' + Tanning' : ''}`,
-                prefill: {
-                    name: form.fullName,
-                    email: form.email,
-                    contact: form.phone,
-                },
-                theme: { color: '#e5222a' },
-                handler: async (response) => {
-                    setSubmitting(true);
-                    try {
-                        const saveData = await postToSheet({
-                            action: 'verify_and_save',
-                            ...form,
-                            amount,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_signature: response.razorpay_signature,
-                        });
-                        if (saveData.result !== 'success') {
-                            throw new Error(saveData.message || 'Payment verification failed.');
-                        }
-                        setSubmitted(true);
-                        setForm(INITIAL_STATE);
-                        setValidated(false);
-                    } catch (err) {
-                        setErrorMessage(err.message);
-                        setSubmitError(true);
-                    } finally {
-                        setSubmitting(false);
-                    }
-                },
-                modal: {
-                    ondismiss: () => setSubmitting(false),
-                },
-            });
-
-            rzp.on('payment.failed', (response) => {
-                setErrorMessage(response.error?.description || 'Payment failed. Please try again.');
-                setSubmitError(true);
+        if (GOOGLE_SHEET_ENDPOINT) {
+            setSubmitting(true);
+            try {
+                const res = await fetch(GOOGLE_SHEET_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(form),
+                });
+                if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
+                const data = await res.json();
+                if (data.result !== 'success') throw new Error('Unexpected response from sheet');
+            } catch (err) {
                 setSubmitting(false);
-            });
-
-            setSubmitting(false);
-            rzp.open();
-        } catch (err) {
-            setErrorMessage(err.message);
-            setSubmitError(true);
+                setSubmitError(true);
+                return;
+            }
             setSubmitting(false);
         }
+
+        setSubmitted(true);
+        setForm(INITIAL_STATE);
+        setValidated(false);
     };
 
     return (
@@ -197,7 +105,7 @@ const RegistrationForm = () => {
                                 onClose={() => setSubmitted(false)}
                                 dismissible
                             >
-                                Thanks! Your registration and payment were captured. Our team will reach out shortly to confirm.
+                                Thanks! Your registration details were captured. Our team will reach out shortly to confirm.
                             </Alert>
                         )}
 
@@ -207,7 +115,7 @@ const RegistrationForm = () => {
                                 onClose={() => setSubmitError(false)}
                                 dismissible
                             >
-                                {errorMessage || 'Something went wrong while submitting. Please check your connection and try again.'}
+                                Something went wrong while submitting. Please check your connection and try again.
                             </Alert>
                         )}
 
@@ -375,8 +283,8 @@ const RegistrationForm = () => {
                                             <option value="">
                                                 {form.category ? 'Select entry type' : 'Select a category first'}
                                             </option>
-                                            {(CATEGORY_TIERS[form.category] || []).map((tier) => (
-                                                <option key={tier.value} value={tier.value}>{tier.label}</option>
+                                            {(ENTRY_TYPES[form.category] || []).map((t) => (
+                                                <option key={t} value={t}>{t}</option>
                                             ))}
                                         </Form.Select>
                                         <Form.Control.Feedback type="invalid">
@@ -386,32 +294,16 @@ const RegistrationForm = () => {
                                 </Col>
                             </Row>
 
-                            <Row>
-                                <Col md={6}>
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Weight Category / Division</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="division"
-                                            placeholder="e.g. Men's Physique - 75kg"
-                                            value={form.division}
-                                            onChange={handleChange}
-                                        />
-                                    </Form.Group>
-                                </Col>
-                                {form.category === 'Bodybuilding (NPC)' && (
-                                    <Col md={6} className="d-flex align-items-center">
-                                        <Form.Check
-                                            type="checkbox"
-                                            id="tanning-addon"
-                                            name="tanning"
-                                            checked={form.tanning}
-                                            onChange={handleChange}
-                                            label={`Add Tanning Facility (+₹${TANNING_FEE})`}
-                                        />
-                                    </Col>
-                                )}
-                            </Row>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Weight Category / Division</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="division"
+                                    placeholder="e.g. Men's Physique - 75kg"
+                                    value={form.division}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Additional Message</Form.Label>
@@ -443,10 +335,8 @@ const RegistrationForm = () => {
                                 {submitting ? (
                                     <>
                                         <Spinner animation="border" size="sm" className="me-2" />
-                                        Processing...
+                                        Submitting...
                                     </>
-                                ) : form.entryType && GOOGLE_SHEET_ENDPOINT ? (
-                                    `Pay ₹${getTotalAmount(form)} & Register`
                                 ) : (
                                     'Submit Registration'
                                 )}

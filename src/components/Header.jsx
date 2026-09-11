@@ -32,7 +32,9 @@ const Header = () => {
                     </Nav>
                     <Button
                         as="a"
-                        href="#register"
+                        href="https://link.district.in/DSTRKT/9odjit7e"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="btn-brand mt-3 mt-lg-0 ms-lg-3"
                     >
                         Register Now

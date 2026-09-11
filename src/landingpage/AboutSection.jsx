@@ -65,7 +65,7 @@ const AboutSection = () => {
 
                 <Row className="justify-content-center mt-5 pt-4">
                     <Col lg={10} data-aos="fade-up">
-                        <h3 className="detail-heading" style={{ fontSize: 24, marginTop: 0 }}>
+                        <h3 className="detail-heading text-center" style={{ fontSize: 24, marginTop: 0 }}>
                             Three Days. Three Experiences. One Fitness Destination.
                         </h3>
 

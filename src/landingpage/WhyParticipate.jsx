@@ -26,7 +26,7 @@ const WhyParticipate = () => {
                 </div>
 
                 <div className="center-btn">
-                    <a href="#register" className="btn-brand">Register Now</a>
+                    <a href="https://link.district.in/DSTRKT/9odjit7e" target="_blank" rel="noopener noreferrer" className="btn-brand">Register Now</a>
                 </div>
             </Container>
         </section>
