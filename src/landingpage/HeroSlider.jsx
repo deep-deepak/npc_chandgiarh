@@ -5,7 +5,7 @@ export const HERO_SLIDES = [
         src: 'homebanner.png',
         alt: 'NPC Regionals Chandigarh 2026 - powerlifting stage',
         label: 'Powerlifting',
-        description: 'Squat, bench, deadlift — pure strength on the platform.',
+        description: 'Squat, bench press, deadlift — pure strength on the platform.',
     },
    
     {

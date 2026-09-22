@@ -23,7 +23,7 @@ const HeroSection = () => {
 
                         <div className="d-flex flex-wrap mb-4">
                             <span className="hero-badge">
-                                <FaCalendarAlt /> 9 - 11 October 2025
+                                <FaCalendarAlt /> 9 - 11 October 2026
                             </span>
                             <span className="hero-badge">
                                 <FaMapMarkerAlt /> Indradhanush Auditorium, Panchkula, Chandigarh
